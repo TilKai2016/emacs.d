@@ -3,6 +3,38 @@
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
 
+;;----------------------------------------------------
+;; TilKai custom start
+;;----------------------------------------------------
+
+;;------------------------------------
+;;open linum mode
+;;------------------------------------
+(setq linum-format "%4d \u2502")
+(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'ess-mode-hook 'linum-mode)
+
+;;------------------------------------
+;; sentence-end 识别中文标点
+;;from 王艮 http://docs.huihoo.com/homepage/shredderyin/wiki/SimpleConfig.html
+;;------------------------------------
+(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
+(setq sentence-end-double-space nil)
+
+;;------------------------------------
+;; sentence-end 光标在屏幕倒数第三行时向下则开始滚动屏幕
+;;from 王艮 http://docs.huihoo.com/homepage/shredderyin/wiki/SimpleConfig.html
+;;------------------------------------
+(setq scroll-margin 3
+      scroll-conservatively 10000)
+
+;;----------------------------------------------------
+;; TilKai custom end
+;;----------------------------------------------------
+
+;;----------------------------------------------------------------------------
+;; Check version
+;;----------------------------------------------------------------------------
 (let ((minver "24.1"))
   (when (version< emacs-version minver)
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
@@ -88,7 +120,7 @@
 (require 'init-csv)
 (require 'init-erlang)
 (require 'init-javascript)
-(require 'init-php)
+;;(require 'init-php)
 (require 'init-org)
 (require 'init-nxml)
 (require 'init-html)
